@@ -1,10 +1,10 @@
 # manifest-rev
 
-[![build status](https://semaphoreci.com/api/v1/ladjs/manifest-rev/branches/master/shields_badge.svg)](https://semaphoreci.com/ladjs/manifest-rev)
+[![build status](https://img.shields.io/travis/ladjs/manifest-rev.svg)](https://travis-ci.org/ladjs/manifest-rev)
 [![code coverage](https://img.shields.io/codecov/c/github/ladjs/manifest-rev.svg)](https://codecov.io/gh/ladjs/manifest-rev)
 [![code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![made with lass](https://img.shields.io/badge/made_with-lass-95CC28.svg)](https://github.com/lassjs/lass)
+[![made with lass](https://img.shields.io/badge/made_with-lass-95CC28.svg)](https://lass.js.org)
 [![license](https://img.shields.io/github/license/ladjs/manifest-rev.svg)](<>)
 
 > Dynamically load assets into your views, emails, etc. from your `rev-manifest.json` manifest revision file (e.g. `<script src="{{ manifest('foo.js'); }}"></script>` would return `<script src="/foo-0775041dd4.js"></script>` when rendered).
