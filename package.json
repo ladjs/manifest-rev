@@ -1,0 +1,129 @@
+{
+  "name": "manifest-rev",
+  "description": "Dynamically load assets into your views, emails, etc. from your `rev-manifest.json` manifest revision file",
+  "version": "0.0.0",
+  "author": "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)",
+  "bugs": {
+    "url": "https://github.com/ladjs/manifest-rev/issues",
+    "email": "niftylettuce@gmail.com"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "contributors": [
+    "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "ava": "^2.4.0",
+    "codecov": "^3.5.0",
+    "cross-env": "^5.2.1",
+    "eslint": "^6.4.0",
+    "eslint-config-xo-lass": "^1.0.3",
+    "fixpack": "^2.3.1",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "nyc": "^14.1.1",
+    "remark-cli": "^7.0.0",
+    "remark-preset-github": "^0.0.16",
+    "xo": "^0.24.0"
+  },
+  "engines": {
+    "node": ">=8.x"
+  },
+  "homepage": "https://github.com/ladjs/manifest-rev",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "keywords": [
+    "asset",
+    "bundle",
+    "concat",
+    "css",
+    "dynamic",
+    "ejs",
+    "gulp",
+    "gulp-rev",
+    "gulp-rev-all",
+    "jade",
+    "js",
+    "koa",
+    "lass",
+    "loader",
+    "manifest",
+    "manifest-rev",
+    "minify",
+    "nunjucks",
+    "optimization",
+    "optimize",
+    "optipng",
+    "pipeline",
+    "render",
+    "rev",
+    "revision",
+    "script",
+    "uglify",
+    "views"
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "xo --fix",
+      "git add"
+    ],
+    "*.md": [
+      "remark . -qfo",
+      "git add"
+    ],
+    "package.json": [
+      "fixpack",
+      "git add"
+    ]
+  },
+  "main": "index.js",
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 90,
+    "reporter": [
+      "lcov",
+      "html",
+      "text"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "trailingComma": "none"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-github"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ladjs/manifest-rev"
+  },
+  "scripts": {
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "xo && remark . -qfo",
+    "test": "npm run lint && npm run test-coverage",
+    "test-coverage": "cross-env NODE_ENV=test nyc ava"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "xo-lass"
+    ]
+  }
+}
