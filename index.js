@@ -13,25 +13,20 @@ module.exports = function(opts) {
     throw new TypeError('`prepend` property defined, but it was not a string');
   }
 
-  opts.logger = opts.logger || console;
   opts.prepend = opts.prepend || '/';
 
   let manifest = {};
 
   try {
     manifest = require(opts.manifest);
-  } catch (err) {
-    opts.logger.error(err);
-  }
+  } catch (err) {}
 
   return str => {
     let output = opts.prepend + str;
     try {
       if (!PROD) manifest = require(opts.manifest);
       output = opts.prepend + (manifest[str] || str);
-    } catch (err) {
-      opts.logger.error(err);
-    }
+    } catch (err) {}
 
     return output;
   };
