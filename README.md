@@ -15,6 +15,7 @@
 * [Install](#install)
 * [Usage](#usage)
 * [API](#api)
+* [Breaking changes in 2.0](#breaking-changes-in-20)
 * [Contributors](#contributors)
 * [License](#license)
 
@@ -55,7 +56,7 @@ app.use((ctx, next) => {
 // ...
 ```
 
-2. Call the `manifest(str)` helper function in your views when you need to include assets (requires a templating engine).
+2. Call the `manifest(str, ?prop)` helper function in your views when you need to include assets (requires a templating engine).
 
    > [pug][]:
 
@@ -65,7 +66,7 @@ app.use((ctx, next) => {
        title Foo
      body
        h1 Foo
-       script(src=manifest('foo.js'))
+       script(src=manifest('foo.js', 'path'))
    ```
 
    > [ejs][]
@@ -77,7 +78,7 @@ app.use((ctx, next) => {
      </head>
      <body>
        <h1>Foo</h1>
-       <script src="<%= manifest('foo.js'); %>"></script>
+       <script src="<%= manifest('foo.js', 'path'); %>" integrity="<%= manifest('foo.js', 'integrity') %>"></script>
      </body>
    </html>
    ```
@@ -91,7 +92,7 @@ app.use((ctx, next) => {
      </head>
      <body>
        <h1>Foo</h1>
-       <script src="{{ manifest('foo.js'); }}"></script>
+       <script src="{{ manifest('foo.js'); }}" integrity="{{ manifest('foo.js', 'integrity'); }}"></script>
      </body>
    </html>
    ```
@@ -105,6 +106,11 @@ app.use((ctx, next) => {
   * `prepend` (optional) - string to prepend before file paths rendered after lookup (e.g. if you type `{{ manifest('foo.js'); }}` in your view, and you have passed `prepend: '/dist/'` in your setup, then your tag would render as `<script src="/dist/foo-0775041dd4.js"></script>` (defaults to `/`)
 
 * `manifest(str)` - the helper function returned when `manifestRev` is invoked in your app. Returns the string found from a lookup in your `rev-manifest.json` file for the `str` argument passed (e.g. if you type `{{ manifest('foo.js'); }}` in your view, then it returns for the value of the `foo.js` property as defined in your `manifest` file, such as `foo-0775041dd4.js`). If the found is not found, then the input `str` argument is returned.
+
+
+## Breaking changes in 2.0
+
+* `manifest(str)` is now `manifest(str, prop)` which now accepts a following property within your `rev-manifest.json` file. `prop` is optional and defaults to the path of the rev'd file. For example if you type `{{ manifest('foo.js', 'integrity'); }}` in your view, then it returns for the value of the `foo.js` file `integrity` property as defined in your `manifest` file, such as `sha256-YEWYfCFP9yc5DAF8K5AtLEyFuKZ1MNw+xQPm8g70LYY=`). If the found is not found, then the input `str` argument is returned.
 
 
 ## Contributors

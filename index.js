@@ -21,11 +21,16 @@ module.exports = function(opts) {
     manifest = require(opts.manifest);
   } catch (err) {}
 
-  return str => {
+  return (str, prop = 'path') => {
     let output = opts.prepend + str;
     try {
       if (!PROD) manifest = require(opts.manifest);
-      output = opts.prepend + (manifest[str] || str);
+      if (typeof manifest[str] === 'string') {
+        output = opts.prepend + String(manifest[str] || str);
+      } else if (typeof manifest[str] === 'object') {
+        const val = String((manifest[str] && manifest[str][prop]) || str);
+        output = prop === 'path' ? opts.prepend + val : val;
+      }
     } catch (err) {}
 
     return output;

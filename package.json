@@ -92,7 +92,7 @@
     "check-coverage": true,
     "lines": 100,
     "functions": 100,
-    "branches": 90,
+    "branches": 80,
     "reporter": [
       "lcov",
       "html",
