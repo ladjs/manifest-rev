@@ -1,1 +1,10 @@
-{}
+{
+  "anotherscript.js": {
+    "path": "anotherscript-56a1a94bca.js",
+    "integrity": "sha256-kT7Trm1GHae0jzievTEVNVU1lFMGDgGOAmnCppZ/iNg="
+  },
+  "script.js": {
+    "path": "script-d80c4dea53.js",
+    "integrity": "sha256-YEWYfCFP9yc5DAF8K5AtLEyFuKZ1MNw+xQPm8g70LYY="
+  }
+}
