@@ -24,14 +24,9 @@ module.exports = function(opts) {
   return (str, prop = 'path') => {
     let output = opts.prepend + str;
     try {
-      if (!PROD) manifest = require(opts.manifest);
-      if (typeof manifest[str] === 'string') {
-        output = opts.prepend + String(manifest[str] || str);
-      } else if (typeof manifest[str] === 'object') {
-        const val = String((manifest[str] && manifest[str][prop]) || str);
-        if (prop === 'path') return opts.prepend + val;
-        output = PROD ? val : false;
-      }
+      const val = String((manifest[str] && manifest[str][prop]) || str);
+      if (prop === 'path') return opts.prepend + val;
+      output = PROD ? val : false;
     } catch (err) {}
 
     return output;
