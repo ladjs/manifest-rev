@@ -75,10 +75,7 @@ test('returns output of integrity when manifest invoked with old format', t => {
 
 test('returns output of integrity when manifest invoked with new format', t => {
   const manifest = path.join(__dirname, 'fixtures', 'rev-manifest.json');
-  t.is(
-    manifestRev({ manifest })('script.js', 'integrity'),
-    'sha256-YEWYfCFP9yc5DAF8K5AtLEyFuKZ1MNw+xQPm8g70LYY='
-  );
+  t.is(manifestRev({ manifest })('script.js', 'integrity'), false);
 });
 
 test('returns output of integrity when manifest invoked in PROD with old format', t => {
