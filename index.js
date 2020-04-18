@@ -1,6 +1,6 @@
-const PROD = process.env.NODE_ENV === 'production';
-
 module.exports = function(opts) {
+  const PROD = process.env.NODE_ENV === 'production';
+
   if (typeof opts !== 'object') {
     throw new TypeError('`options` argument required');
   }
@@ -29,7 +29,8 @@ module.exports = function(opts) {
         output = opts.prepend + String(manifest[str] || str);
       } else if (typeof manifest[str] === 'object') {
         const val = String((manifest[str] && manifest[str][prop]) || str);
-        output = prop === 'path' ? opts.prepend + val : val;
+        if (prop === 'path') return opts.prepend + val;
+        output = PROD ? val : false;
       }
     } catch (err) {}
 
