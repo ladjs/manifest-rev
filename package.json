@@ -1,7 +1,7 @@
 {
   "name": "manifest-rev",
   "description": "Dynamically load assets into your views, emails, etc. from your `rev-manifest.json` manifest revision file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)",
   "bugs": {
     "url": "https://github.com/ladjs/manifest-rev/issues",
