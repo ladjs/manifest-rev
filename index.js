@@ -26,6 +26,7 @@ module.exports = function(opts) {
     try {
       const val = String((manifest[str] && manifest[str][prop]) || str);
       if (prop === 'path') return opts.prepend + val;
+      if (prop === 'integrity') return val === str ? false : val;
       output = PROD ? val : false;
     } catch (err) {}
 
