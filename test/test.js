@@ -47,6 +47,16 @@ test('returns output of integrity when manifest invoked with new format', t => {
   );
 });
 
+test('returns output false when manifest invoked with unknown file', t => {
+  const manifest = path.join(__dirname, 'fixtures', 'rev-manifest.json');
+  t.is(manifestRev({ manifest })('fakescript.js', 'integrity'), false);
+});
+
+test('returns output false when manifest invoked with unknown property', t => {
+  const manifest = path.join(__dirname, 'fixtures', 'rev-manifest.json');
+  t.is(manifestRev({ manifest })('fakescript.js', 'random'), false);
+});
+
 test('returns output of integrity when manifest invoked in PROD with new format', t => {
   const manifest = path.join(__dirname, 'fixtures', 'rev-manifest.json');
   process.env.NODE_ENV = 'production';

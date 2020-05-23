@@ -6,5 +6,9 @@
   "script.js": {
     "path": "script-d80c4dea53.js",
     "integrity": "sha256-YEWYfCFP9yc5DAF8K5AtLEyFuKZ1MNw+xQPm8g70LYY="
+  },
+  "fakescript.js": {
+    "path": "fakescript-d80c4dea53.js",
+    "random": "test"
   }
 }
